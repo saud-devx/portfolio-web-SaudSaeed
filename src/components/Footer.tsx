@@ -19,7 +19,7 @@ const Footer = () => {
 
             <div className="pt-8 border-t border-border/50">
               <p className="text-sm text-muted-foreground">
-                © 2024 Saud Saeed. All rights reserved. • Currently seeking new opportunities
+                © 2024 . All rights reserved. • Currently seeking new opportunities
               </p>
             </div>
           </div>

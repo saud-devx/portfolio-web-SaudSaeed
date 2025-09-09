@@ -20,11 +20,11 @@ const SkillsSection = () => {
     styling: {
       title: 'Styling & Design',
       skills: [
-        { name: 'HTML5', level: 98, experience: '4+ years' },
-        { name: 'CSS3', level: 95, experience: '4+ years' },
+        { name: 'HTML5', level: 98, experience: '3+ years' },
+        { name: 'CSS3', level: 95, experience: '3+ years' },
         { name: 'Tailwind CSS', level: 92, experience: '2+ years' },
         { name: 'Bootstrap', level: 90, experience: '3+ years' },
-        { name: 'Responsive Design', level: 95, experience: '4+ years' },
+        { name: 'Responsive Design', level: 95, experience: '3+ years' },
         { name: 'CSS Animations', level: 85, experience: '2+ years' }
       ]
     },
@@ -42,12 +42,12 @@ const SkillsSection = () => {
     tools: {
       title: 'Tools & Methodologies',
       skills: [
-        { name: 'Git/GitHub', level: 95, experience: '4+ years' },
+        { name: 'Git/GitHub', level: 95, experience: '3+ years' },
         { name: 'JIRA', level: 90, experience: '3+ years' },
         { name: 'Trello', level: 85, experience: '2+ years' },
         { name: 'ClickUp', level: 82, experience: '1+ year' },
         { name: 'Agile/Scrum', level: 88, experience: '3+ years' },
-        { name: 'VS Code', level: 95, experience: '4+ years' }
+        { name: 'VS Code', level: 95, experience: '3+ years' }
       ]
     }
   };

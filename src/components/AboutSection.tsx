@@ -42,7 +42,7 @@ const AboutSection = () => {
               <div>
                 <h3 className="text-2xl font-semibold mb-4 text-primary">My Journey</h3>
                 <p className="text-muted-foreground leading-relaxed mb-4">
-                  With over 4 years of development experience, I've specialized in creating 
+                  With over 3+ years of development experience, I've specialized in creating 
                   robust frontend applications using Angular, React, and the MEAN stack. 
                   My journey began with a passion for solving complex problems through code.
                 </p>
@@ -75,7 +75,7 @@ const AboutSection = () => {
 
           <div className="grid md:grid-cols-3 gap-6">
             <div className="text-center glass-card p-6">
-              <div className="text-3xl font-bold gradient-text mb-2">4+</div>
+              <div className="text-3xl font-bold gradient-text mb-2">3+</div>
               <div className="text-muted-foreground">Years Experience</div>
             </div>
             <div className="text-center glass-card p-6">

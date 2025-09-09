@@ -43,7 +43,7 @@ const HeroSection = () => {
             <div className="relative w-32 h-32 mx-auto mb-6">
               <img
                 src={profileImage}
-                alt="Saud Saeed"
+                alt=""
                 className="w-full h-full rounded-full object-cover border-4 border-primary glow-effect"
               />
               <div className="absolute inset-0 rounded-full bg-gradient-primary opacity-20 animate-pulse"></div>
@@ -52,7 +52,7 @@ const HeroSection = () => {
 
           <div className="space-y-6 animate-fade-in-up" style={{ animationDelay: '0.2s' }}>
             <h1 className="text-5xl md:text-7xl font-bold">
-              <span className="gradient-text">Saud Saeed</span>
+              <span className="gradient-text"></span>
             </h1>
             
             <div className="h-16 flex items-center justify-center">
@@ -68,7 +68,7 @@ const HeroSection = () => {
 
             <div className="flex items-center justify-center gap-2 text-primary">
               <Code2 className="w-5 h-5" />
-              <span className="font-mono">4+ Years Experience</span>
+              <span className="font-mono">3+ Years Experience</span>
             </div>
 
             <p className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto leading-relaxed">
@@ -89,7 +89,7 @@ const HeroSection = () => {
             >
               View Projects
             </Button>
-            <Button variant="ghost" size="lg" className="text-primary hover:bg-primary/10 transition-smooth">
+            <Button variant="outline" size="lg" className="border-primary text-primary hover:bg-primary hover:text-primary-foreground transition-smooth">
               <Download className="w-4 h-4 mr-2" />
               Download CV
             </Button>
