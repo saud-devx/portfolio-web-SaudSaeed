@@ -54,12 +54,14 @@ const HeroSection = () => {
             <h1 className="text-5xl md:text-7xl font-bold">
               <span className="gradient-text"></span>
             </h1>
-            
-            <div className="h-16 flex items-center justify-center">
-              <h2 className="text-xl md:text-2xl text-muted-foreground font-mono">
-                <span className="typewriter">{displayText}</span>
-              </h2>
-            </div>
+
+          <div className="flex items-center justify-center py-4 px-3">
+  <h2 className="text-base sm:text-lg md:text-2xl text-muted-foreground font-mono text-center leading-snug break-words max-w-[90%]">
+    <span className="typewriter">{displayText}</span>
+  </h2>
+</div>
+
+
 
             <div className="flex items-center justify-center gap-2 text-muted-foreground">
               <MapPin className="w-4 h-4" />
@@ -72,7 +74,7 @@ const HeroSection = () => {
             </div>
 
             <p className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto leading-relaxed">
-              Passionate Frontend Developer specializing in Angular, React, and Next.js. 
+              Passionate Frontend Developer specializing in Angular, React, and Next.js.
               Building modern, scalable web applications with exceptional user experiences.
             </p>
           </div>
@@ -81,10 +83,10 @@ const HeroSection = () => {
             <Button onClick={scrollToContact} size="lg" className="bg-gradient-primary hover:shadow-glow-cyan transition-smooth">
               Get In Touch
             </Button>
-            <Button 
-              onClick={scrollToProjects} 
-              variant="outline" 
-              size="lg" 
+            <Button
+              onClick={scrollToProjects}
+              variant="outline"
+              size="lg"
               className="border-primary text-primary hover:bg-primary hover:text-primary-foreground transition-smooth"
             >
               View Projects

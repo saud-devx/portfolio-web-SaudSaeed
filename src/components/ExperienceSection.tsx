@@ -9,8 +9,8 @@ interface Experience {
   startDate: string;
   endDate?: string;
   current: boolean;
-  description: string[];
-  technologies: string[];
+  description?: string[];   // made optional to avoid undefined issues
+  technologies?: string[];  // made optional
 }
 
 const ExperienceSection = () => {
@@ -24,11 +24,19 @@ const ExperienceSection = () => {
           "https://portfolio-web-saudsaeed-backend.onrender.com/api/v1/experiences"
         );
         const data = await res.json();
-        console.log(data, 'experiences data..')
-        setExperiences(data);
-        
+        console.log("experiences data..", data);
+
+        // Handle both direct array and wrapped { data: [...] }
+        if (Array.isArray(data)) {
+          setExperiences(data);
+        } else if (data && Array.isArray(data.data)) {
+          setExperiences(data.data);
+        } else {
+          setExperiences([]);
+        }
       } catch (error) {
         console.error("Error fetching experiences:", error);
+        setExperiences([]);
       } finally {
         setLoading(false);
       }
@@ -58,6 +66,12 @@ const ExperienceSection = () => {
           </div>
 
           <div className="space-y-8">
+            {experiences.length === 0 && (
+              <p className="text-muted-foreground text-center">
+                No experiences found.
+              </p>
+            )}
+
             {experiences.map((exp) => (
               <div
                 key={exp._id}
@@ -98,30 +112,37 @@ const ExperienceSection = () => {
                   </div>
                 </div>
 
-                <div className="mb-6">
-                  <ul className="space-y-2">
-                    {exp.description.map((item, i) => (
-                      <li
-                        key={i}
-                        className="flex items-start gap-3 text-muted-foreground"
-                      >
-                        <div className="w-2 h-2 bg-primary rounded-full mt-2 flex-shrink-0"></div>
-                        <span>{item}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
+                {/* Description list */}
+                {Array.isArray(exp.description) && exp.description.length > 0 && (
+                  <div className="mb-6">
+                    <ul className="space-y-2">
+                      {exp.description.map((item, i) => (
+                        <li
+                          key={i}
+                          className="flex items-start gap-3 text-muted-foreground"
+                        >
+                          <div className="w-2 h-2 bg-primary rounded-full mt-2 flex-shrink-0"></div>
+                          <span>{item}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                )}
 
-                <div className="flex flex-wrap gap-2">
-                  {exp.technologies.map((tech, i) => (
-                    <span
-                      key={i}
-                      className="px-3 py-1 bg-primary/10 text-primary rounded-full text-sm font-medium border border-primary/20"
-                    >
-                      {tech}
-                    </span>
-                  ))}
-                </div>
+                {/* Technologies list */}
+                {Array.isArray(exp.technologies) &&
+                  exp.technologies.length > 0 && (
+                    <div className="flex flex-wrap gap-2">
+                      {exp.technologies.map((tech, i) => (
+                        <span
+                          key={i}
+                          className="px-3 py-1 bg-primary/10 text-primary rounded-full text-sm font-medium border border-primary/20"
+                        >
+                          {tech}
+                        </span>
+                      ))}
+                    </div>
+                  )}
               </div>
             ))}
           </div>

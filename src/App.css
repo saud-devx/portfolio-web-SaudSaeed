@@ -40,3 +40,9 @@
 .read-the-docs {
   color: #888;
 }
+
+.typewriter {
+  display: inline-block;
+  white-space: normal !important; /* allow line breaks */
+  word-break: break-word;
+}
