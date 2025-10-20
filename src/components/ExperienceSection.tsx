@@ -4,7 +4,7 @@ import { MapPin, Calendar, Building } from "lucide-react";
 interface Experience {
   _id: string;
   company: string;
-  position: string;
+  title: string;
   location: string;
   startDate: string;
   endDate?: string;
@@ -80,7 +80,7 @@ const ExperienceSection = () => {
                 <div className="flex flex-col md:flex-row md:items-start md:justify-between mb-6">
                   <div className="flex-1">
                     <h3 className="text-2xl font-semibold text-primary mb-2">
-                      {exp.position}
+                      {exp.title}
                     </h3>
                     <div className="flex items-center gap-2 mb-2">
                       <Building className="w-4 h-4 text-secondary" />
