@@ -7,7 +7,7 @@ import { toast } from "sonner";
 const HeroSection = () => {
   const [displayText, setDisplayText] = useState('');
   const fullText = 'Frontend Developer & MEAN Stack Specialist';
-  const API_BASE = import.meta.env.VITE_API_URL || 'http://localhost:8080';
+const API_BASE = import.meta.env.VITE_API_URL || 'http://localhost:8080';
 
   useEffect(() => {
     let index = 0;
@@ -40,6 +40,7 @@ const HeroSection = () => {
   // Download CV function 
   const handleDownloadCV = async () => {
     try {
+      console.log('this: ', API_BASE)
       const res = await fetch(`${API_BASE}/api/download/resume`, {
         method: 'GET',
         credentials: 'include',
