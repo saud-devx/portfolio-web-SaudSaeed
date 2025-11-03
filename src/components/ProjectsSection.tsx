@@ -212,7 +212,7 @@ const ProjectsSection = () => {
               </p>
               <Button className="bg-gradient-primary hover:shadow-glow-cyan" asChild>
                 <a
-                  href="https://github.com/saudsaeed"
+                  href="https://github.com/saud-devx"
                   target="_blank"
                   rel="noopener noreferrer"
                 >
