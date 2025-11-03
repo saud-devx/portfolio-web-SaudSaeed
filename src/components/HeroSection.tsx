@@ -2,10 +2,12 @@ import { useEffect, useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { Download, MapPin, Code2 } from 'lucide-react';
 import profileImage from '@/assets/profile-image.jpg';
+import { toast } from "sonner";
 
 const HeroSection = () => {
   const [displayText, setDisplayText] = useState('');
   const fullText = 'Frontend Developer & MEAN Stack Specialist';
+  const API_BASE = import.meta.env.VITE_API_URL || 'http://localhost:8080';
 
   useEffect(() => {
     let index = 0;
@@ -35,6 +37,29 @@ const HeroSection = () => {
     }
   };
 
+  // Download CV function 
+  const handleDownloadCV = async () => {
+    try {
+      const res = await fetch(`${API_BASE}/api/download/resume`, {
+        method: 'GET',
+        credentials: 'include',
+      });
+
+      if (!res.ok) throw new Error('Download failed');
+
+      const blob = await res.blob();
+      const link = document.createElement('a');
+      link.href = window.URL.createObjectURL(blob);
+      link.download = 'Saud-Saeed-Resume.pdf';
+      link.click();
+
+      toast.success("Resume downloaded successfully 🎉");
+    } catch (err) {
+      console.error(err);
+      alert('Could not download the CV');
+    }
+  };
+
   return (
     <section id="home" className="min-h-screen flex items-center justify-center relative overflow-hidden">
       <div className="container mx-auto px-6 py-20">
@@ -55,11 +80,11 @@ const HeroSection = () => {
               <span className="gradient-text"></span>
             </h1>
 
-          <div className="flex items-center justify-center py-4 px-3">
-  <h2 className="text-base sm:text-lg md:text-2xl text-muted-foreground font-mono text-center leading-snug break-words max-w-[90%]">
-    <span className="typewriter">{displayText}</span>
-  </h2>
-</div>
+            <div className="flex items-center justify-center py-4 px-3">
+              <h2 className="text-base sm:text-lg md:text-2xl text-muted-foreground font-mono text-center leading-snug break-words max-w-[90%]">
+                <span className="typewriter">{displayText}</span>
+              </h2>
+            </div>
 
 
 
@@ -91,7 +116,7 @@ const HeroSection = () => {
             >
               View Projects
             </Button>
-            <Button variant="outline" size="lg" className="border-primary text-primary hover:bg-primary hover:text-primary-foreground transition-smooth">
+            <Button onClick={handleDownloadCV} variant="outline" size="lg" className="border-primary text-primary hover:bg-primary hover:text-primary-foreground transition-smooth">
               <Download className="w-4 h-4 mr-2" />
               Download CV
             </Button>
