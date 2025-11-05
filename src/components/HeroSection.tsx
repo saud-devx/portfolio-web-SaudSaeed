@@ -3,11 +3,13 @@ import { Button } from '@/components/ui/button';
 import { Download, MapPin, Code2 } from 'lucide-react';
 import profileImage from '@/assets/profile-image.jpg';
 import { toast } from "sonner";
+import { Loader2 } from "lucide-react";
 
 const HeroSection = () => {
+  const [isDownloading, setIsDownloading] = useState(false);
   const [displayText, setDisplayText] = useState('');
   const fullText = 'Frontend Developer & MEAN Stack Specialist';
-const API_BASE = import.meta.env.VITE_API_URL || 'http://localhost:8080';
+  const API_BASE = import.meta.env.VITE_API_URL || 'http://localhost:8080';
 
   useEffect(() => {
     let index = 0;
@@ -40,24 +42,24 @@ const API_BASE = import.meta.env.VITE_API_URL || 'http://localhost:8080';
   // Download CV function 
   const handleDownloadCV = async () => {
     try {
-      console.log('this: ', API_BASE)
-      const res = await fetch(`${API_BASE}/api/download/resume`, {
-        method: 'GET',
-        credentials: 'include',
-      });
+      setIsDownloading(true);
 
-      if (!res.ok) throw new Error('Download failed');
+      const res = await fetch(`${import.meta.env.VITE_API_URL}/download/resume`);
+      if (!res.ok) throw new Error("Server error");
 
       const blob = await res.blob();
-      const link = document.createElement('a');
-      link.href = window.URL.createObjectURL(blob);
-      link.download = 'Saud-Saeed-Resume.pdf';
+      const url = window.URL.createObjectURL(blob);
+
+      const link = document.createElement("a");
+      link.href = url;
+      link.download = "Saud_Saeed_Resume.pdf";
       link.click();
 
-      toast.success("Resume downloaded successfully 🎉");
+      toast.success("Resume downloaded ✅");
     } catch (err) {
-      console.error(err);
-      alert('Could not download the CV');
+      toast.error("Failed to download resume");
+    } finally {
+      setIsDownloading(false);
     }
   };
 
@@ -117,9 +119,19 @@ const API_BASE = import.meta.env.VITE_API_URL || 'http://localhost:8080';
             >
               View Projects
             </Button>
-            <Button onClick={handleDownloadCV} variant="outline" size="lg" className="border-primary text-primary hover:bg-primary hover:text-primary-foreground transition-smooth">
-              <Download className="w-4 h-4 mr-2" />
-              Download CV
+            <Button
+              onClick={handleDownloadCV}
+              disabled={isDownloading}
+              variant="outline"
+              size="lg"
+              className="border-primary text-primary hover:bg-primary hover:text-primary-foreground transition-smooth"
+            >
+              {isDownloading ? (
+                <Loader2 className="w-4 h-4 mr-2 animate-spin" />
+              ) : (
+                <Download className="w-4 h-4 mr-2" />
+              )}
+              {isDownloading ? "Downloading..." : "Download CV"}
             </Button>
           </div>
         </div>
