@@ -108,7 +108,7 @@ const ContactSection = () => {
 
     try {
       const API_BASE = import.meta.env.VITE_API_URL;
-      const res = await fetch(`${API_BASE}/api/v1/message`, {
+      const res = await fetch(`${API_BASE}/api/v1/messages`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(formData),
