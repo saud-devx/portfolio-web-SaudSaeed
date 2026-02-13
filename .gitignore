@@ -1,0 +1,16 @@
+/node_modules
+/package-lock.json
+/build/
+/dist/
+/out/
+/.DS_Store
+/.env
+/.env.local
+/.env.development
+/.env.test
+/.env.production
+/.vscode/
+/.idea/
+*.log
+*.tsbuildinfo   
+bun.lockb
