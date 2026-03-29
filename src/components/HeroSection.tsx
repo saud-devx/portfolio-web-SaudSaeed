@@ -93,7 +93,7 @@ const HeroSection = () => {
 
             <div className="flex items-center justify-center gap-2 text-muted-foreground">
               <MapPin className="w-4 h-4" />
-              <span>Pakistan • Open to Remote & Relocationnnnn</span>
+              <span>Pakistan • Open to Remote & Relocation</span>
             </div>
 
             <div className="flex items-center justify-center gap-2 text-primary">
