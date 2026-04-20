@@ -82,7 +82,8 @@ const ContactSection = () => {
     try {
       setIsDownloading(true);
 
-      const res = await fetch(`${import.meta.env.VITE_API_URL}/download/resume`);
+      const API_BASE = import.meta.env.VITE_API_URL || 'http://localhost:8080';
+      const res = await fetch(`${API_BASE}/api/download/resume`);
       if (!res.ok) throw new Error("Server error");
 
       const blob = await res.blob();
