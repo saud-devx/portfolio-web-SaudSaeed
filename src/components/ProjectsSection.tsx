@@ -10,7 +10,7 @@ const ProjectsSection = () => {
   useEffect(() => {
     const fetchProjects = async () => {
       try {
-        const API_BASE = import.meta.env.VITE_API_URL || 'http://localhost:8080';
+        const API_BASE = import.meta.env.VITE_API_URL || 'http://localhost:4000';
         const res = await fetch(
           `${API_BASE}/api/v1/projects`
         );

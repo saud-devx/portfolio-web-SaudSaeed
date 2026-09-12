@@ -9,7 +9,7 @@ const HeroSection = () => {
   const [isDownloading, setIsDownloading] = useState(false);
   const [displayText, setDisplayText] = useState('');
   const fullText = 'Frontend Developer & MEAN Stack Specialist';
-  const API_BASE = import.meta.env.VITE_API_URL || 'http://localhost:8080';
+  const API_BASE = import.meta.env.VITE_API_URL || 'http://localhost:4000';
 
   useEffect(() => {
     let index = 0;

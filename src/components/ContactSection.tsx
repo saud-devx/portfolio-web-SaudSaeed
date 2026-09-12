@@ -82,7 +82,7 @@ const ContactSection = () => {
     try {
       setIsDownloading(true);
 
-      const API_BASE = import.meta.env.VITE_API_URL || 'http://localhost:8080';
+      const API_BASE = import.meta.env.VITE_API_URL || 'http://localhost:4000';
       const res = await fetch(`${API_BASE}/api/download/resume`);
       if (!res.ok) throw new Error("Server error");
 
@@ -103,12 +103,12 @@ const ContactSection = () => {
   };
 
   // message sending handling 
-  const handleSubmit = async (e) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setLoading(true);
 
     try {
-      const API_BASE = import.meta.env.VITE_API_URL;
+      const API_BASE = import.meta.env.VITE_API_URL || 'http://localhost:4000';
       const res = await fetch(`${API_BASE}/api/v1/messages`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },

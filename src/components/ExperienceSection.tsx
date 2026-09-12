@@ -20,9 +20,8 @@ const ExperienceSection = () => {
   useEffect(() => {
     const fetchExperiences = async () => {
       try {
-        const res = await fetch(
-          "https://portfolio-web-saudsaeed-backend.onrender.com/api/v1/experiences"
-        );
+        const API_BASE = import.meta.env.VITE_API_URL || 'http://localhost:4000';
+        const res = await fetch(`${API_BASE}/api/v1/experiences`);
         const data = await res.json();
         console.log("experiences data..", data);
 
